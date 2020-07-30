@@ -38,7 +38,7 @@
       <van-goods-action-icon icon="cart-o" @click="onClickCart">
         购物车
       </van-goods-action-icon>
-      <van-goods-action-button type="warning" @click="sorry">
+      <van-goods-action-button type="warning" @click="onClickAddInCart">
         加入购物车
       </van-goods-action-button>
       <van-goods-action-button type="danger" @click="sorry">
@@ -62,6 +62,7 @@ import {
   GoodsActionIcon,
   GoodsActionButton
 } from 'vant';
+import axios from 'axios'
 
 export default {
   components: {
@@ -102,6 +103,15 @@ export default {
     },
     onClickShop() {
       this.$router.push('shop');
+    },
+    onClickAddInCart() {
+      axios.post('http://192.168.1.5:8054/student/cookieTest', {
+
+      }).then(function(response) {
+        console.log(response)
+      }).catch(function(error) {
+        console.log(error)
+      })
     },
 
     sorry() {
